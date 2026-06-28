@@ -11,12 +11,17 @@ Lovelace card for Home Assistant that displays public transport connections from
    - URL: `wallach-game/idos-card`, category: **Dashboard**
    - Click Add, then Install
 
-2. Add the resource manually (HACS v2 does not do this automatically):
+2. Trigger HACS to pick up the new repo:
+   - HACS → three dots → **Dismiss new repositories**
+
+3. Find **IDOS Card** in HACS and click **Download**
+
+4. Add the resource manually (HACS v2 does not do this automatically):
    - Settings → Dashboards → three dots → Resources → Add resource
    - URL: `/hacsfiles/idos-card/idos-card.js`
    - Type: **JavaScript module**
 
-3. Reload the browser.
+5. Reload the browser.
 
 ## Configuration
 
