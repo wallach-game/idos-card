@@ -36,3 +36,24 @@ n: 5
 | `n` | no | 3 | Number of connections to show |
 | `date` | no | today | Date in IDOS format (e.g. `28.6.2026`) |
 | `time` | no | now | Time in `HH:MM` format |
+
+## Examples
+
+Next trains from Prague to Brno:
+```yaml
+type: custom:idos-card
+api_url: http://192.168.1.10:8001
+from: Praha hl.n.
+to: Brno hl.n.
+n: 3
+```
+
+Morning commute from a specific time:
+```yaml
+type: custom:idos-card
+api_url: http://192.168.1.10:8001
+from: Brno hl.n.
+to: Praha hl.n.
+n: 5
+time: "07:00"
+```
