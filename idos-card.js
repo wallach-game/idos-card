@@ -70,9 +70,9 @@ class IdosCard extends HTMLElement {
       return `
         <div class="conn">
           <div class="times">
-            <span class="planned ${delay > 0 ? 'struck' : ''}">${c.dep_time}</span>
-            ${realTime ? `<span class="real">${realTime}</span>` : ''}
+            <span class="planned ${delay > 0 ? 'delayed' : ''}">${realTime || c.dep_time}</span>
             ${delayBadge}
+            ${realTime ? `<span class="original">${c.dep_time}</span>` : ''}
             <span class="dur">${c.duration}</span>
           </div>
           ${legs ? `<div class="legs">${legs}</div>` : ''}
@@ -92,8 +92,8 @@ class IdosCard extends HTMLElement {
         }
         .times { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .planned { font-size: 1.6em; font-weight: bold; }
-        .planned.struck { text-decoration: line-through; color: var(--secondary-text-color); font-size: 1.2em; }
-        .real { font-size: 1.6em; font-weight: bold; color: var(--error-color, #f44); }
+        .planned.delayed { color: var(--error-color, #f44); }
+        .original { font-size: 0.9em; color: var(--secondary-text-color); text-decoration: line-through; align-self: center; }
         .badge { font-size: 0.75em; padding: 2px 8px; border-radius: 99px; font-weight: 600; }
         .badge.ok { background: var(--success-color, #4caf50); color: #fff; }
         .badge.late { background: var(--error-color, #f44); color: #fff; }
