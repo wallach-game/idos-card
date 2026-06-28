@@ -12,20 +12,20 @@ function addMins(time, mins) {
   return `${String(Math.floor(total / 60) % 24).padStart(2, '0')}:${String(total % 60).padStart(2, '0')}`;
 }
 
-const TYPE_ICON = {
-  'vlak': '🚆', 'train': '🚆',
-  'autobus': '🚌', 'bus': '🚌',
-  'metro': '🚇',
-  'tramvaj': '🚋', 'tram': '🚋',
-  'trolejbus': '🚎',
-  'loď': '⛴️',
-  'letadlo': '✈️',
-};
+const TYPE_ICON = [
+  [/vlak|train|regiojet|rj|ic|ec|sc|en|rychlík|expres|osobní|přímý|spěšný|sp\b|os\b/i, '🚆'],
+  [/metro/i, '🚇'],
+  [/tramvaj|tram/i, '🚋'],
+  [/trolejbus/i, '🚎'],
+  [/loď|ferry/i, '⛴️'],
+  [/letadlo|air/i, '✈️'],
+  [/autobus|bus/i, '🚌'],
+];
 
-function typeIcon(type) {
-  const t = type.toLowerCase();
-  for (const [key, icon] of Object.entries(TYPE_ICON)) {
-    if (t.includes(key)) return icon;
+function typeIcon(type, name) {
+  const s = `${type} ${name}`;
+  for (const [re, icon] of TYPE_ICON) {
+    if (re.test(s)) return icon;
   }
   return '🚌';
 }
@@ -63,9 +63,9 @@ class IdosCard extends HTMLElement {
         ? `<span class="badge late">+${delay} min</span>`
         : `<span class="badge ok">včas</span>`;
 
-      const legs = (c.legs || []).map(l => `
-        <span class="leg">${typeIcon(l.type)} ${l.name}</span>
-      `).join('<span class="sep">→</span>');
+      const legs = (c.legs || []).map(l =>
+        `<span class="leg">${typeIcon(l.type, l.name)} ${l.name || l.type}</span>`
+      ).join('<span class="sep">→</span>');
 
       return `
         <div class="conn">
