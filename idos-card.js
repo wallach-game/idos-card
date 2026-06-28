@@ -45,7 +45,7 @@ class IdosCard extends HTMLElement {
     const { api_url, from, to, n = 3, date = '', time = '' } = this.config;
     const params = new URLSearchParams({ from_stop: from, to_stop: to, n, date, time });
     try {
-      const res = await fetch(`${api_url}/api/search?${params}`);
+      const res = await fetch(`${api_url}/search?${params}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       this._render(await res.json());
     } catch (e) {
