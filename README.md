@@ -23,6 +23,10 @@ Lovelace card for Home Assistant that displays public transport connections from
 
 5. Reload the browser.
 
+## Public API
+
+A public instance of the IDOS API is available at `https://idos.numerlab.org/api` — no self-hosting required.
+
 ## Configuration
 
 ```yaml
@@ -44,16 +48,16 @@ n: 5
 
 ## Examples
 
-Next trains from Prague to Brno:
+Next trains from Prague to Brno (using public API):
 ```yaml
 type: custom:idos-card
-api_url: http://192.168.1.10:8001
+api_url: https://idos.numerlab.org/api
 from: Praha hl.n.
 to: Brno hl.n.
 n: 3
 ```
 
-Morning commute from a specific time:
+Morning commute from a specific time (self-hosted):
 ```yaml
 type: custom:idos-card
 api_url: http://192.168.1.10:8001
