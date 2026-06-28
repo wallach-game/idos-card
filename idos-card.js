@@ -87,8 +87,8 @@ class IdosCard extends HTMLElement {
           margin: 8px 12px;
           padding: 12px 16px;
           border-radius: 12px;
-          background: var(--card-background-color, #1e1e1e);
-          border: 1px solid var(--divider-color, #333);
+          background: var(--secondary-background-color, rgba(255,255,255,0.06));
+          box-shadow: 0 1px 4px rgba(0,0,0,0.3);
         }
         .times { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .planned { font-size: 1.6em; font-weight: bold; }
